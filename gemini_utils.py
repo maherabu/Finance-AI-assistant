@@ -1,11 +1,9 @@
-import os
+import streamlit as st
 import google.generativeai as genai
-from dotenv import load_dotenv
 
 
-load_dotenv()
-api_key = os.getenv("GOOGLE_API_KEY") 
-genai.configure(api_key=api_key)
+api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=api_key)    
 
 def get_budget_advice(prompt):
     model = genai.GenerativeModel("gemini-2.0-flash")
